@@ -1,0 +1,12 @@
+body {
+  background-color: black;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.center {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  color: darkkhaki;
+}

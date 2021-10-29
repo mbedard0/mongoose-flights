@@ -6,8 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mongoose Flights</title>
 </head>
+<%- include('../partials/nav') %>
 <body>
   <h1>Mongoose Flights</h1>
+  <% flight.forEach(function(flight) { %>
+    Airline: <%= flight.airline %> 
+    Airport: <%= flight.airport %> <br> 
+    Flight Number: <%= flight.flightNo %> <br> 
+    Departure Date: <%= flight.departs %> <br>
+    <a href="/flights/<%= flight._id %> ">Details</a> <br>
+  <% }) %> 
   <a href="/flights/new">Add a flight</a>
 </body>
 </html>

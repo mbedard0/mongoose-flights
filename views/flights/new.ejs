@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mongoose Flights</title>
 </head>
+<%- include('../partials/nav') %>
 <body>
   <h1>Add a Flight</h1>
   <form id="new-form" action="/flights" method="POST">
@@ -17,7 +18,7 @@
     </select>
     <label for="airport-input">Airport:</label>
     <select name="airport" id="airport-select">
-      <option value="DEN">DEN</option>
+      <option value="DEN" selected>DEN</option>
       <option value="AUS">AUS</option>
       <option value="DFW">DFW</option>
       <option value="LAX">LAX</option>
@@ -26,7 +27,7 @@
     <label for="flightNo">Flight Number:</label>
     <input type="number" name="flightNo" id="flightNo-input" required: true>
     <label for="depart-input">Departure date:</label>
-    <input type="date" name="departs">
+    <input type="datetime-local" name="departs">
     <button type="submit">Add Flight</button>
   </form>
 </body>
