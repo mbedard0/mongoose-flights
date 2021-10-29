@@ -12,6 +12,13 @@
   Airline: <%= flight.airline %> <br>
   Flight Number: <%= flight.flightNo %> <br>
   Departure Date: <%= flight.departs %> <br>
+  Ticket information <br>
+  <% if(flight.ticket.length) { %> 
+  <% flight.ticket.forEach(function(ticket) { %>
+    Seat: <%= ticket.seat %> <br>
+    Price: <%= ticket.price %> <br>
+  <% })  %>
+  <% } else {  %>
   <form id="newTicket" action="/flights/<%= flight._id %>/ticket" method="POST">
   <label for="seat">Seat</label>
   <input name="seat" required pattern="[A-F][1-9]\d?"><br>
@@ -19,5 +26,6 @@
   <input name="price" type="number" min="0">
   <button type="submit">Add information</button>
   </form>
+  <% } %> 
 </body>
 </html>
