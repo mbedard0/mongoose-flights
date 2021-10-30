@@ -9,10 +9,14 @@
 <%- include('../partials/nav') %>
 <body>
   <h1>Add a Destination</h1>
-  <form id="new-form" action="/destinations" method="POST">
-    <label for="destinations">Destination:</label>
-    <input type="text" name="destination" id="destination" required: true>
+  <form id="add-destination-form" action="/destinations" method="POST">
+    <label for="destinations">Add a destination not already listed below:</label>
+    <input type="text" name="airport" id="destination" required: true>
     <button type="submit">Add Destination</button>
   </form>
+  <p>Destinations already listed: <br></p>
+  <% destinations.forEach(function(destination) { %>
+    <p> - <%= destination.airport %> </p><br>
+  <% }) %> 
 </body>
 </html>
