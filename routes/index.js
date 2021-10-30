@@ -5,7 +5,6 @@ const router = Router()
 /* GET home page. */
 router.get('/', indexCtrl.index)
 
-
 export { 
   router
 }
