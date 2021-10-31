@@ -16,7 +16,7 @@
   <% if(flight.ticket.length) { %> 
   <% flight.ticket.forEach(function(ticket) { %>
     Seat: <%= ticket.seat %> <br>
-    Price: <%= ticket.price %> <br>
+    Price: $<%= ticket.price %> <br>
   <% })  %>
   <% } else {  %>
   <form id="newTicket" action="/flights/<%= flight._id %>/ticket" method="POST">
@@ -28,7 +28,7 @@
   </form>
   <% } %>
   Destinations: <br>
-  <%- // flight.destination.map(d => `${d.airport}`) %> <br>
+  <%- flight.destination.map(d => `${d.airport}`) %> <br>
   Add destinations: <br>
   <form id="add-des-to-flight" action="/flights/<%= flight._id %>/destination" method="POST">
     <select name="destinationID">
