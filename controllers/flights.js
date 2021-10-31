@@ -1,3 +1,4 @@
+import { Destination } from '../models/destination.js'
 import { Flight } from '../models/flight.js'
 
 function index(req, res) {
@@ -22,13 +23,33 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  Flight.findById(req.params.id, function(error, flight) {
+  Flight.findById(req.params.id)
+  .populate('destination')
+  .exec(function(error, flight) {
+    Destination.find({_id: {$nin: flight.destination}}, function(error, destinations) {
     res.render('flights/show', {
       flight,
       title: 'Flight Details',
+      destinations
+    })
     })
   })
 }
+
+// function show(req, res) {
+//   Flight.findById(req.params.id)
+//   .populate('destination')
+//   .exec(function(error, flight) {
+//     Destination.find({_id: {$nin: flight.destination}}, function(err, destination) {
+//     res.render('flights/show', {
+//       flight,
+//       title: 'Flight Details',
+//       destination
+//     })
+//   })
+// })
+
+// now that we are looking to show the destinations associated with flights, we need to add a populate function here.
 
 function createTicket(req, res) {
   Flight.findById(req.params.id, function(error, flight) {
