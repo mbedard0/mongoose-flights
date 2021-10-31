@@ -36,24 +36,18 @@ function show(req, res) {
   })
 }
 
-// function show(req, res) {
-//   Flight.findById(req.params.id)
-//   .populate('destination')
-//   .exec(function(error, flight) {
-//     Destination.find({_id: {$nin: flight.destination}}, function(err, destination) {
-//     res.render('flights/show', {
-//       flight,
-//       title: 'Flight Details',
-//       destination
-//     })
-//   })
-// })
-
-// now that we are looking to show the destinations associated with flights, we need to add a populate function here.
-
 function createTicket(req, res) {
   Flight.findById(req.params.id, function(error, flight) {
     flight.ticket.push(req.body)
+    flight.save(function(error) {
+      res.redirect(`/flights/${flight._id}`)
+    })
+  })
+}
+
+function addDestination(req, res) {
+  Flight.findById(req.params.id, function(error, flight) {
+    flight.destination.push(req.body.destinationID)
     flight.save(function(error) {
       res.redirect(`/flights/${flight._id}`)
     })
@@ -65,5 +59,6 @@ export {
   newFlight as new,
   create,
   show,
-  createTicket
+  createTicket,
+  addDestination
 }

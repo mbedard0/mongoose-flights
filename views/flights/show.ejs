@@ -28,14 +28,13 @@
   </form>
   <% } %>
   Destinations: <br>
-  <!-- need to populate destination info for specific ticket here -->
-  <!-- allow the user to view a dropdown menu to select -->
+  <%- // flight.destination.map(d => `${d.airport}`) %> <br>
   Add destinations: <br>
   <form id="add-des-to-flight" action="/flights/<%= flight._id %>/destination" method="POST">
     <select name="destinationID">
-      <%- destinations.map(d => 
+      <%- destinations.map(d =>
         `<option value="${d._id}">${d.airport}</option>`
-      ).join('') %>
+      ).join('')%>
     </select>
     <button type="submit">Add destination</button>
   </form>
