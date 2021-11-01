@@ -15,8 +15,9 @@ function newFlight(req, res) {
 }
 
 function create(req, res) {
-  let departure = new Date(req.body.departs)
-  req.body.departs = departure.toUTCString()
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key]
+  }
   Flight.create(req.body, function(error, flight) {
     res.redirect('/flights')
   })

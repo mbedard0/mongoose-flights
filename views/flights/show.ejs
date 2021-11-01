@@ -28,7 +28,9 @@
   </form>
   <% } %>
   Destinations: <br>
-  <%- flight.destination.map(d => `${d.airport}`) %> <br>
+  <ul>
+  <%- flight.destination.map(d => `<li>${d.airport}</li>`).join('') %>
+  </ul>
   Add destinations: <br>
   <form id="add-des-to-flight" action="/flights/<%= flight._id %>/destination" method="POST">
     <select name="destinationID">
